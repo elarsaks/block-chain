@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/elarsaks/block-chain/issues"
   },
-  "homepage": "https://github.com/elarsaks/block-chain#readme"
+  "homepage": "https://github.com/elarsaks/block-chain#readme",
+  "dependencies": {
+    "sha256": "^0.2.0"
+  }
 }
