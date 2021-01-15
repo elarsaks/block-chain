@@ -3,6 +3,7 @@ const app = express()
 const bodyParser = require('body-parser')
 const Blockchain = require('./blockchain')
 const { v4: uuid } = require('uuid')
+const port = process.argv[2]
 
 const nodeAddress = uuid().split('-').join('')
 
@@ -39,6 +40,29 @@ app.get('/mine', function (req, res) {
   })
 })
 
-app.listen(3000, function () {
-  console.log('Listening on port 3000...')
+// register node and broadcast it to the network
+app.post('register-and-broadcast-node', function (req, res) {
+  const newNodeUrl = req.body.newNodeUrl
+  if (bitcoin.networkNodes.indexOf(newNodeUrl) == -1) {
+    bitcoin.networkNodes.push(newNodeUrl)
+  }
+
+  bitcoin.networkNodes.forEach(networkNodeUrl => {
+    // '/register-node'
+    // Udemy video player broke down
+  })
+})
+
+// register a node with network
+app.post('register-node', function (req, res) {
+  // ...
+})
+
+// register multiple nodes at once
+app.post('register-nodes-bulk', function (req, res) {
+  // ...
+})
+
+app.listen(port, function () {
+  console.log(`Listening on port ${port}...`)
 })
